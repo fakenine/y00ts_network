@@ -3,12 +3,12 @@ module Twitter
     ENDPOINT_URL = "https://api.twitter.com/2/users/#{ENV['Y00TLIST_TWITTER_ID']}/tweets"
 
     def perform
-      get_y00tlisted_users
+      fetch_y00tlisted_users
     end
 
     private
 
-    def get_y00tlist_tweets
+    def fetch_y00tlist_tweets
       params = {
         "max_results" => 100,
         "expansions" => "author_id",
@@ -33,14 +33,14 @@ module Twitter
       Rails.logger.error e
     end
 
-    def get_y00tlisted_users
-      tweets = get_y00tlist_tweets
+    def fetch_y00tlisted_users
+      tweets = fetch_y00tlist_tweets
 
       tweets.map do |tweet|
         next unless tweet["text"].starts_with?("Welcome")
 
         y00tlisted_user = tweet["entities"]["mentions"].first
-        y00t = Y00t.create!(username: y00tlisted_user["username"], twitter_user_id: y00tlisted_user["id"])
+        y00t = Y00t.create!(twitter_username: y00tlisted_user["username"], twitter_user_id: y00tlisted_user["id"])
 
         y00t
       end
