@@ -22,9 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_193849) do
 
   create_table "y00ts", force: :cascade do |t|
     t.string "twitter_username"
+    t.bigint "twitter_user_id"
     t.text "twitter_bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["twitter_user_id"], name: "index_y00ts_on_twitter_user_id"
+    t.index ["twitter_username"], name: "index_y00ts_on_twitter_username"
   end
 
 end
