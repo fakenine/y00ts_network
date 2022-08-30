@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_193849) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_000123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,4 +30,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_193849) do
     t.index ["twitter_username"], name: "index_y00ts_on_twitter_username"
   end
 
+  create_table "y00ts_categories", force: :cascade do |t|
+    t.bigint "y00ts_id", null: false
+    t.bigint "categories_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categories_id"], name: "index_y00ts_categories_on_categories_id"
+    t.index ["y00ts_id"], name: "index_y00ts_categories_on_y00ts_id"
+  end
+
+  add_foreign_key "y00ts_categories", "categories", column: "categories_id"
+  add_foreign_key "y00ts_categories", "y00ts", column: "y00ts_id"
 end
