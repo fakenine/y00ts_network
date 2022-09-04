@@ -1,0 +1,14 @@
+alpha: /alpha|hunter/i
+advisor_investor: /advisor|investor/i
+artist: /artist|filmaker|photographer|producer|singer/i
+community: /community|mod|moderator|spaces/i
+dao: /DAO/i
+designer: /designer|UI|UX/i
+education: /teacher|educator/i
+engineer: /engineer|dev|developer|techie|data/i
+finance: /finance|IB|M&A|banker|analytics|accountant/i
+founder_builder: /CEO|founder|building|(?<!community\s)manager/i
+marketing: /marketing|business|acquisition|ambassador|partnerships/i
+music: /music|producer|beatmaker/i
+trader: /trader/i
+writer: /writer|journalist|columnist/i

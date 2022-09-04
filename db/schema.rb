@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_000123) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  create_table "y00t_categories", force: :cascade do |t|
+    t.bigint "y00t_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_y00t_categories_on_category_id"
+    t.index ["y00t_id"], name: "index_y00t_categories_on_y00t_id"
+  end
+
   create_table "y00ts", force: :cascade do |t|
     t.string "twitter_username"
     t.string "twitter_user_id"
@@ -33,15 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_000123) do
     t.index ["twitter_username"], name: "index_y00ts_on_twitter_username", unique: true
   end
 
-  create_table "y00ts_categories", force: :cascade do |t|
-    t.bigint "y00ts_id", null: false
-    t.bigint "categories_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_y00ts_categories_on_categories_id"
-    t.index ["y00ts_id"], name: "index_y00ts_categories_on_y00ts_id"
-  end
-
-  add_foreign_key "y00ts_categories", "categories", column: "categories_id"
-  add_foreign_key "y00ts_categories", "y00ts", column: "y00ts_id"
+  add_foreign_key "y00t_categories", "categories"
+  add_foreign_key "y00t_categories", "y00ts"
 end

@@ -6,3 +6,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+categories = YAML.load_file("#{Rails.root}/lib/data/regexes.yml").keys.each do |key|
+  Category.find_or_create_by!(name: key)
+end
