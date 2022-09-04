@@ -4,7 +4,6 @@ module Twitter
   # Fetches the twitter profile of a y00tlisted user
   class FetchUserProfilesService < RequestService
     def initialize(twitter_user_ids = [])
-      byebug
       @y00ts = Y00t.where(twitter_user_id: twitter_user_ids)
     end
 
