@@ -11,8 +11,29 @@ module Twitter
     private
 
     def fetch_y00tlisted_users
-      tweets = run_request
+      response = run_request
+      tweets = response["data"]
+      meta = response["meta"]
 
+      parse_tweets(tweets)
+
+      while meta["next_token"].present? do
+        response = run_request({ pagination_token: meta["next_token"] })
+        tweets = response["data"]
+        meta = response["meta"]
+        parse_tweets(tweets)
+
+        sleep 10
+      end
+
+      parse_tweets(tweets)
+    end
+
+    def mentions_y00tlisted?(text)
+      text.starts_with?('Welcome') || text.starts_with?('RT')
+    end
+
+    def parse_tweets(tweets)
       tweets.map do |tweet|
         next unless mentions_y00tlisted?(tweet['text'])
 
@@ -21,10 +42,6 @@ module Twitter
 
         create_y00t!(mentionned_user)
       end
-    end
-
-    def mentions_y00tlisted?(text)
-      text.starts_with?('Welcome') || text.starts_with?('RT')
     end
 
     def create_y00t!(mentionned_user)
@@ -38,13 +55,17 @@ module Twitter
       "https://api.twitter.com/2/users/#{ENV['Y00TLIST_TWITTER_ID']}/tweets"
     end
 
-    def request_params
-      {
+    def request_params(opts = {})
+      params = {
         'max_results' => 100,
         'expansions' => 'author_id',
         'tweet.fields' => 'author_id,conversation_id,created_at,entities,id',
         'user.fields' => 'description'
       }
+
+      params.merge!('pagination_token' => opts[:pagination_token]) if opts[:pagination_token].present?
+
+      params
     end
   end
 end

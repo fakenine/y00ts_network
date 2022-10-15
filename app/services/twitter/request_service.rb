@@ -2,10 +2,10 @@ module Twitter
   class RequestService
     private
 
-    def run_request
-      request = Typhoeus::Request.new(endpoint_url, request_options)
+    def run_request(opts = {})
+      request = Typhoeus::Request.new(endpoint_url, request_options(opts))
       response = request.run
-      JSON.parse(response.body)['data']
+      JSON.parse(response.body)
     rescue StandardError => e
       Rails.logger.error e
     end
@@ -14,7 +14,7 @@ module Twitter
       raise NotImplementedError
     end
 
-    def request_params
+    def request_params(opts = {})
       raise NotImplementedError
     end
 
@@ -24,11 +24,11 @@ module Twitter
       }
     end
 
-    def request_options
+    def request_options(opts = {})
       {
         method: 'get',
         headers: request_headers,
-        params: request_params
+        params: request_params(opts)
       }
     end
   end

@@ -1,14 +1,18 @@
-alpha: /alpha|hunter/i
-advisor_investor: /advisor|investor/i
-artist: /artist|filmaker|photographer|producer|singer/i
-community: /community|mod|moderator|spaces/i
-dao: /DAO/i
-designer: /designer|UI|UX/i
-education: /teacher|educator/i
-engineer: /engineer|dev|developer|techie|data/i
-finance: /finance|IB|M&A|banker|analytics|accountant/i
-founder_builder: /CEO|founder|building|(?<!community\s)manager/i
-marketing: /marketing|business|acquisition|ambassador|partnerships/i
-music: /music|producer|beatmaker/i
-trader: /trader/i
-writer: /writer|journalist|columnist/i
+alpha: alpha|hunter
+advisor_investor: advisor|investor
+analyst: analyst
+artist: artist|filmmaker|photographer|producer|singer|draw
+community_manager: community|community manager|\bmod\b|moderator|spaces
+dao: \bDAO\b|council
+defi: \bDeFi\b
+designer: designer|design|\bUI\b|\bUX\b
+education: teacher|educator
+engineer: engineer|(?<!sales\s|biz\s)\bdev\b|developer|techie|data
+farmer: farmer
+fashion_beauty: fashion|model
+finance: finance|\bIB\b|M&A|banker|analytics|accountant|trader|accounting|wealth managment
+founder_builder: CEO|founder|building|(?<!community\s)manager|core team
+marketing: marketing|\bbusiness\b|acquisition|ambassador|partnerships|partnership|director|sales|consulting|operations
+music: music|producer|beatmaker
+scientist: scientist|PhD
+writer: writer|journalist|columnist

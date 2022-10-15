@@ -18,21 +18,24 @@ module Twitter
     end
 
     def fetch_profiles
-      profiles = run_request
+      @y00ts.pluck(:twitter_user_id).in_groups_of(100) do |twitter_user_ids|
+        response = run_request({ ids: twitter_user_ids.compact.join(',') })
+        profiles = response["data"]
 
-      profiles.each do |profile|
-        Y00t.find_by!(twitter_user_id: profile["id"])
-            .update!(
-              twitter_profile_image_url: profile["profile_image_url"],
-              twitter_verified: profile["verified"],
-              twitter_description: profile["description"]
-            )  
+        profiles.each do |profile|
+          Y00t.find_by!(twitter_user_id: profile["id"])
+              .update!(
+                twitter_profile_image_url: profile["profile_image_url"],
+                twitter_verified: profile["verified"],
+                twitter_description: profile["description"]
+              )
+        end
       end
     end
 
-    def request_params
+    def request_params(opts = {})
       {
-        'ids' => @y00ts.pluck(:twitter_user_id).join(','),
+        'ids' => opts[:ids],
         'user.fields' => 'name,username,description,profile_image_url,verified'
       }
     end
