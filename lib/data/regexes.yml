@@ -2,7 +2,7 @@ alpha: alpha|hunter
 advisor_investor: advisor|investor
 analyst: analyst
 artist: artist|filmmaker|photographer|producer|singer|draw
-community_manager: community|community manager|\bmod\b|moderator|spaces
+community_manager: community|community manager|\bmod\b|moderator|spaces|discord admin
 dao: \bDAO\b|council
 defi: \bDeFi\b
 designer: designer|design|\bUI\b|\bUX\b
@@ -11,8 +11,9 @@ engineer: engineer|(?<!sales\s|biz\s)\bdev\b|developer|techie|data
 farmer: farmer
 fashion_beauty: fashion|model
 finance: finance|\bIB\b|M&A|banker|analytics|accountant|trader|accounting|wealth managment
-founder_builder: CEO|founder|building|(?<!community\s)manager|core team
+founder_builder: CEO|founder|building|build|builder|(?<!community\s)manager|core team
 marketing: marketing|\bbusiness\b|acquisition|ambassador|partnerships|partnership|director|sales|consulting|operations
 music: music|producer|beatmaker
+product: product|\bPO\b|\bproduct owner\b
 scientist: scientist|PhD
 writer: writer|journalist|columnist

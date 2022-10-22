@@ -10,3 +10,6 @@
 categories = YAML.load_file("#{Rails.root}/lib/data/regexes.yml").keys.each do |key|
   Category.find_or_create_by!(name: key)
 end
+
+# Used for verified profiles
+Category.find_or_create_by!(name: 'vip')
