@@ -52,6 +52,9 @@ gem 'bootsnap', require: false
 
 gem 'typhoeus'
 
+gem "jsbundling-rails"
+gem "cssbundling-rails"
+
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
