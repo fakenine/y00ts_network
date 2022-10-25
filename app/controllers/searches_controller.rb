@@ -2,5 +2,10 @@
 
 # Controller used to search users
 class SearchesController < ApplicationController
-  def index; end
+  include Pagy::Backend
+
+  def index
+    @categories = Category.all
+    @pagy, @y00ts = pagy(Y00t.all.includes(:categories))
+  end
 end

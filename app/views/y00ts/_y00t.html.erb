@@ -1,0 +1,23 @@
+<div class="col d-flex align-items-stretch">
+  <div class="card shadow-sm">
+    <%= image_tag y00t_twitter_image_hd(y00t.twitter_profile_image_url), class: 'card-img-top y00t-card', width: '225', onerror: "this.src='#{image_url('y00ts_default.jpg')}';this.onerror='';" %>
+
+    <div class="card-body">
+      <h4><%= y00t.twitter_username %></h4>
+      <p class="card-text">
+        <%= y00t.twitter_description %>
+      </p>
+      <div class="categories pb-3">
+        <% y00t.categories.each do |category| %>
+          <span class="badge text-bg-secondary"><%= category.name %></span>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">Follow</button>
+        </div>
+        <small class="text-muted">9 mins</small>
+      </div>
+    </div>
+  </div>
+</div>

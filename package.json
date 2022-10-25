@@ -4,13 +4,15 @@
   "dependencies": {
     "@hotwired/turbo-rails": "^7.2.4",
     "@popperjs/core": "^2.11.6",
+    "@selectize/selectize": "^0.14.0",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
+    "bootswatch": "^5.2.2",
     "esbuild": "^0.15.12",
     "sass": "^1.55.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --load-path=node_modules"
   }
 }

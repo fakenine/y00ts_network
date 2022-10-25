@@ -1,2 +1,6 @@
+@import "bootswatch/dist/darkly/variables";
 @import 'bootstrap/scss/bootstrap';
+@import "bootswatch/dist/darkly/bootswatch";
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import '@selectize/selectize/dist/css/selectize.bootstrap5';
+@import "custom";
