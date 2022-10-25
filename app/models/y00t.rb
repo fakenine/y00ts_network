@@ -8,4 +8,8 @@ class Y00t < ApplicationRecord
   has_many :categories, through: :y00t_categories
 
   scope :with_categories, -> (categories_names) { joins(:categories).where(categories: { name: categories_names }) }
+
+  def twitter_profile_url
+    "https://twitter.com/#{twitter_username}"
+  end
 end

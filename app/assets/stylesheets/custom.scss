@@ -16,6 +16,16 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.card-text {
-  min-height: 130px;
+.pagination {
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .card-text {
+    min-height: 150px;
+  }
+
+  .categories {
+    min-height: 50px;
+  }
 }

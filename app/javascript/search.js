@@ -4,5 +4,6 @@ $(function () {
     labelField: 'name',
     searchField: 'name',
     options: $('#query').data('options'),
+    items: $('#query').data('items')
   });
 });

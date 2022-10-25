@@ -6,11 +6,19 @@ class SearchesController < ApplicationController
 
   def index
     @categories_names = Category.all.map { |cat| { name: cat.name } }
+    @categories_query = @categories_names.select { |k, _v| k[:name].in?(params[:query].split(',')) }
+                                         .map { |k, v| k[:name] }
 
-    if params[:query]
-      @pagy, @y00ts = pagy(Y00t.with_categories(params[:query].split(',')).includes(:categories))
+    @pagy, @y00ts = pagy(find_y00ts)
+  end
+
+  private
+
+  def find_y00ts
+    if params[:query].present?
+      Y00t.with_categories(params[:query].split(',')).includes(:categories)
     else
-      @pagy, @y00ts = pagy(Y00t.all.includes(:categories))
+      Y00t.all.includes(:categories)
     end
   end
 end
