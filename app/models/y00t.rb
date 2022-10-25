@@ -6,4 +6,6 @@ class Y00t < ApplicationRecord
 
   has_many :y00t_categories, dependent: :destroy, foreign_key: :y00t_id
   has_many :categories, through: :y00t_categories
+
+  scope :with_categories, -> (categories_names) { joins(:categories).where(categories: { name: categories_names }) }
 end
