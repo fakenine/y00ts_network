@@ -23,7 +23,7 @@ module Twitter
         meta = response["meta"]
         parse_tweets(tweets)
 
-        sleep 10
+        sleep 2
       end
 
       parse_tweets(tweets)
