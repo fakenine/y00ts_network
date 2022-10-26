@@ -15,9 +15,9 @@ class SearchesController < ApplicationController
 
   def find_y00ts
     if params[:query].present?
-      Y00t.with_categories(params[:query].split(',')).includes(:categories)
+      Y00t.with_categories(params[:query].split(',')).includes(:categories).order(created_at: :desc)
     else
-      Y00t.all.includes(:categories)
+      Y00t.all.includes(:categories).order(created_at: :desc)
     end
   end
 

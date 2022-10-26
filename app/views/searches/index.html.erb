@@ -5,7 +5,7 @@
       <p class="lead text-muted">Find y00tlisted people by area of expertise and network with them.</p>
       <div class="row align-items-center">
         <%= form_with url: "/", method: :get do |form| %>
-          <%= form.text_field :query, data: { options: @categories_names, items: @categories_query } %>
+          <%= form.text_field :query, class: 'form-control', data: { options: @categories_names, items: @categories_query } %>
           <%= form.submit "Search", class: 'btn btn-primary mt-3' %>
         <% end %>
       </div>
