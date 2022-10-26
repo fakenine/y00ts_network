@@ -1,24 +1,27 @@
-# README
+# Y00ts Network
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+- Ruby 3.1.2
+- NodeJS
 
-* Ruby version
+## Installation
 
-* System dependencies
+```
+bundle install
+rake db:setup
+```
 
-* Configuration
+## Configuration
 
-* Database creation
+```
+cp .env.example .env
+```
 
-* Database initialization
+Set the `TWITTER_BEARER_TOKEN` valeu to your Twitter app bearer token
 
-* How to run the test suite
+## Launch
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+foreman start -f Procfile.dev
+```
