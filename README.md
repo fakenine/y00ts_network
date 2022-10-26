@@ -9,7 +9,7 @@
 
 ```
 bundle install
-rake db:setup
+rails db:setup
 ```
 
 ## Configuration
@@ -18,7 +18,19 @@ rake db:setup
 cp .env.example .env
 ```
 
-Set the `TWITTER_BEARER_TOKEN` valeu to your Twitter app bearer token
+- Set the `TWITTER_BEARER_TOKEN` value to your Twitter app bearer token
+- Run the services to fill your database
+
+```
+rake twitter:fetch_y00tlisted_users
+rake twitter:fetch_users_profiles
+```
+
+- Run the services to match y00ts with categories
+
+```
+rake categories:match
+```
 
 ## Launch
 
